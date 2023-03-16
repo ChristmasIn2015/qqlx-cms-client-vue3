@@ -29,7 +29,7 @@ class Request {
 				if (["40301", "40302"].includes(response.data?.code)) {
 					setTimeout(() => {
 						localStorage.setItem("qqlx-token", "");
-						window.location.assign("/cms-client/login");
+						window.location.assign("/oa-client/login");
 					}, 2000);
 				}
 			}

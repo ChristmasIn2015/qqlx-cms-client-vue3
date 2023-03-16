@@ -21,7 +21,7 @@ onMounted(async () => {
 	if (code) {
 		const info = await UserStore.post(code as string);
 		UserStore.userEditor = info;
-		router.push("/cms-client");
+		router.push("/oa-client");
 	}
 });
 </script>

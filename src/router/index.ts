@@ -3,8 +3,8 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
 	{
-		path: "/cms-client",
-		redirect: "/cms-client/home/index",
+		path: "/oa-client",
+		redirect: "/oa-client/home/index",
 		component: () => import("@/components/layout.vue"),
 		children: [
 			{
@@ -23,7 +23,7 @@ const routes = [
 		],
 	},
 	{
-		path: "/cms-client/login",
+		path: "/oa-client/login",
 		component: () => import("@/views/login/index.vue"),
 	},
 	{

@@ -2034,14 +2034,13 @@ punycode@^2.1.1:
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.3.0.tgz#f67fa67c94da8f4d0cfff981aee4118064199b8f"
   integrity sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==
 
-qqlx-core@^0.1.81, qqlx-core@^0.1.83:
-  version "0.1.88"
-  resolved "https://registry.npmjs.org/qqlx-core/-/qqlx-core-0.1.88.tgz#c653aaae14512b87c476ad5d3f1066647fbc6ee2"
-  integrity sha512-y7JSRjbeUZe6lKYOv8hq4Up51EujmoHVKXhUCY+Ah70w9PqCP3rdi6AScH4J7nQ2nymBOBhbNNpjYwCFk6zG/A==
+qqlx-core@^0.1.98:
+  version "0.1.98"
+  resolved "https://registry.npmjs.org/qqlx-core/-/qqlx-core-0.1.98.tgz#3f772ef1efe363881e7c184b19136c7c07348a2f"
+  integrity sha512-kXQFVwrCNjD6p5ssDcakwWN3hVHSuWbQRQ80zjRwhKTlhkIMGnIx16rgEaKjcUMDHKuJMTafq0M3zoFnq2m2Dg==
   dependencies:
     esbuild "^0.17.0"
     mongodb "^4.13.0"
-    qqlx-core "^0.1.81"
 
 qrcode@^1.5.1:
   version "1.5.1"

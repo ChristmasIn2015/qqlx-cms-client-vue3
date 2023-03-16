@@ -42,7 +42,7 @@ export const useUserStore = defineStore({
 			return res;
 		},
 		async get(wechatResponseCode: string): Promise<postUserWeChatRes> {
-			const dto: postUserWeChatDto = { wechatResponseCode };
+			const dto: postUserWeChatDto = { wechatResponseCode, isWxmp: true };
 			const res: postUserWeChatRes = await request.post(PATH_USER, { dto });
 
 			return res;

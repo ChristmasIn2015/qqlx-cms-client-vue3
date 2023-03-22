@@ -1,9 +1,10 @@
 <template>
-	<div class="column bg-dark full-height q-px-md items-center q-py-xl">
-		<q-img class="select-none q-mt-xl full-width" style="transform: translateX(20px)" src="@/assets/index.png" fit="cover"></q-img>
-		<q-btn size="lg" disabled class="q-mb-xl" push color="cyan">请重新打开小程序</q-btn>
-		<q-space></q-space>
-	</div>
+    <div class="column full-height q-px-xl items-center q-py-xl">
+        <q-img class="select-none q-mt-xl full-width" src="@/assets/index.png" fit="cover"></q-img>
+        <q-btn size="lg" class="full-width q-my-xl" push color="cyan" :loading="loading" @click="reLunch">{{ loading ? "" : "点击重试" }}</q-btn>
+        <div class="text-white text-weight-bold text-body1">{{ message }}</div>
+        <q-space></q-space>
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -13,16 +14,34 @@ import { useUserStore } from "@/stores/user";
 
 const route = useRoute();
 const router = useRouter();
-
 const UserStore = useUserStore();
 
+const loading = ref(true);
+const message = ref("正在为您登陆《OA平台》");
+
+// @ts-ignore
+const reLunch = () => wx.miniProgram.reLaunch({ url: "/pages/index/index" });
 onMounted(async () => {
-	const { code } = route.query;
-	if (code) {
-		const info = await UserStore.post(code as string);
-		UserStore.userEditor = info;
-		router.push("/oa-client");
-	}
+    try {
+        const code = route.query.code as string;
+
+        if (code) {
+            await UserStore.post(code);
+            await UserStore.setUser();
+
+            const avator = route.query.avator as string;
+            avator && (UserStore.userEditor.avator = avator);
+            const nickname = route.query.nickname as string;
+            nickname && (UserStore.userEditor.nickname = nickname);
+
+            const clientPhoneCode = route.query.clientPhoneCode as string;
+            await UserStore.patch(clientPhoneCode);
+            router.push("/oa-client");
+        }
+    } catch (error) {
+        loading.value = false;
+        message.value = (error as Error).message;
+    }
 });
 </script>
 

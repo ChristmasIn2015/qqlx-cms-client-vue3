@@ -53,7 +53,11 @@ const userIdUrl = ref("");
 const goProfile = () => {
     const info = UserStore.userEditor;
     // @ts-ignore
-    wx.miniProgram.navigateTo({ url: `/pages/autho/index?avator=${info.avator}&nickname=${info.nickname}&phone=${info.phone}` });
+    wx.miniProgram.navigateTo({
+        url: `/pages/autho/index?avator=${info.avator}&nickname=${info.nickname}&phone=${info.phone}`,
+        success: () => {},
+        fail: (res: any) => alert(JSON.stringify(res)),
+    });
 };
 onMounted(async () => {
     try {
